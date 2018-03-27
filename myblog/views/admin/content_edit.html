@@ -1,0 +1,70 @@
+
+{% extends 'parent.html' %}
+
+{% block attackLink %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<link rel="stylesheet" href="/public/css/tools.css">
+<link rel="stylesheet" href="/public/css/views.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    window.onload = function (){
+
+        var simplemde = new SimpleMDE({
+            element: $("#content_input")[0],
+            hideIcons: ["guide", "heading"]
+        })
+        simplemde.value($("#contentHide").html());
+        $(".publish-btn").on('click', function (){
+            $("#content_input").val(simplemde.value())
+            $("#contentForm").submit();
+        })
+    }
+</script>
+{% endblock %}
+
+{%block main%}
+<div id="contentHide" class="none">{{content.content}}</div>
+<form method="post" id="contentForm"/>
+
+<div class="form-group col-md-12" action="/admin/cate"  method="post">
+    <label for="title">标题</label>
+    <input type="text" class="form-control" id="title" placeholder="请输入内容标题" name="title" value="{{content.title}}">
+</div>
+<div class="form-group col-md-3" action="/admin/cate"  method="post" >
+    <label for="title">内容分类</label>
+    <select name="category" id="category" class="form-control">
+        {% for category in categories %}
+        {% if category._id.toString() == content.category.toString() %}
+        <option value="{{category.id}}" selected>{{category.name}}</option>
+        {% else %}
+        <option value="{{category.id}}">{{category.name}}</option>
+        {% endif %}
+        {% endfor %}
+
+    </select>
+</div>
+
+<div class="form-group col-md-9" action="/admin/cate"  method="post">
+    <label for="intro">简介</label>
+    <textarea name="intro" cols="30" rows="1" class="form-control" id="intro" style="resize: none">{{content.intro}}</textarea>
+</div>
+
+<div class="form-group col-md-12" action="/admin/cate"  method="post">
+    <!--<span>您也可以直接上传md文件哦</span>-->
+    <!--<input type="file" name="avatar" id="content" class="ib">-->
+    <textarea class="form-control" name="content_input" id="content_input" cols="30" rows="2">
+
+    </textarea>
+
+
+
+</div>
+
+
+</form>
+<div class="publish">
+    <div class="publish-btn-wrap">
+        <button class="publish-btn">完成修改</button>
+    </div>
+</div>
+{%endblock %}

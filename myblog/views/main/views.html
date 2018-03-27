@@ -1,0 +1,84 @@
+{% extends 'parent.html' %}
+{% block attachCss %}
+<link rel="stylesheet" href="/public/css/attach.css">
+<link rel="stylesheet" href="/public/css/prism.css">
+<script src="/public/js/prism.js"></script>
+<script src="/public/js/marked.js"></script>
+{% endblock %}
+{% block content %}
+<div class="article">
+    <div class="article-part">
+        <h3 class="article-hd">
+            {{content.title}}
+        </h3>
+        <div class="article-info">
+            <div class="article-info-wrap">
+                                    <span class="article-info-author article-info-item">
+                                        作者
+                                        <strong class="article-h">
+                                            {{content.user.username}}
+                                        </strong>
+                                    </span>
+                <span class="article-info-time article-info-item">
+                                        时间
+                                        <strong class="article-h">
+                                            {{content.addTime | date('Y年m月d日 H:m:s', -8*60)}}
+                                        </strong>
+                                    </span>
+                <span class="article-info-read article-info-item">
+                                        阅读
+                                        <strong class="article-h">
+                                            {{content.views}}
+                                        </strong>
+                                    </span>
+                <span class="article-info-review article-info-item">
+                                        评论
+                                        <strong class="article-h">
+                                            {{content.comments.length}}
+                                        </strong>
+                                    </span>
+            </div>
+        </div>
+        <div class="article-intro">
+            {% autoescape %} {{newContent}} {% endautoescape %}
+        </div>
+
+    </div>
+    <div class="comments">
+        <div class="comments-hd clearfix">
+            <h3 class="comments-title fl">评论</h3>
+            <span class="comments-count fr">一共{{content.comments.length}}条评论</span>
+            <input type="text" hidden id="contendId" value="{{content.id}}">
+        </div>
+
+        {% if userInfo.username %}
+        <div class="writable">
+
+            <textarea name="comment" id="comment" cols="30" rows="5" class="writable-area"></textarea>
+            <span id="post-btn">评论</span>
+        </div>
+        {% else %}
+        <div class="login-tip">您还没有登录， 请先登录</div>
+        {% endif %}
+        <div class="comments-list-wrap">
+            {% if !content.comments.length %}
+            <p class="no-comment">还没有留言</p>
+            {% endif %}
+            <ul class="comments-list">
+
+            </ul>
+        </div>
+
+        <div class="page clearfix">
+            <a class="page-prev fl" href="javascript:;">上一页</a>
+            <div class="page-num pa"></div>
+            <a class="page-next fr" href="javascript:;">下一页</a>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/public/js/comment.js"></script>
+
+{% endblock %}

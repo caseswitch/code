@@ -1,0 +1,22 @@
+.publish {
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height:55px;
+    padding:10px 33px;
+    border-top:1px solid #cdcdcd;
+    box-shadow: 0 -1px 1px #cdcdcd;
+    background: #fff;
+}
+.publish-btn-wrap {
+    float: right;
+
+}
+.publish-btn {
+    width: 80px;
+    height:33px;
+    background: #f3f3f3;
+    border:none;
+    border-radius: 3px;
+}

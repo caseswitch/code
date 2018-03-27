@@ -1,0 +1,19 @@
+{% extends 'parent.html' %}
+{%block main%}
+<ol class="breadcrumb">
+    <li><a href="#">管理首页</a></li>
+    <li><a href="#">分类编辑</a></li>
+</ol>
+<h3>分类编辑 - {{category.name}}</h3>
+<!--如果不写提交地址，那么这里提交到的当前地址-->
+<form method="post"/>
+<div class="form-group" action="/admin/cate"  method="post">
+    <label for="name">分类名称</label>
+    <input type="text" value="{{category.name}}" class="form-control" id="name" placeholder="请输入您要创建的分类名称" name="name">
+</div>
+<button type="submit" class="btn btn-default">提交</button>
+</form>
+<!--注意 被包含块的数据 也是在这里必须存在-->
+
+
+{%endblock %}

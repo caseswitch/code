@@ -1,0 +1,147 @@
+.main {
+    width: 1013px;
+    margin: 0 auto;
+    min-height: 400px;
+}
+.content {
+    float: none;
+    width:900px;
+    padding-bottom:30px;
+    margin:0 auto;
+}
+.comments {
+    margin-top: 24px;
+    padding:30px 30px 20px;
+    background: #fff;
+    
+}
+.comments-hd {
+    height:28px;
+    margin-bottom: 16px;
+}
+.comments-hd-title {
+    font-family: "微软雅黑";
+    line-height:28px;
+    font-weight: bold;
+    font-size:16px;
+    color:#140d1a;
+}
+.comments-count {
+    line-height:28px;
+    font-size:12px;
+    color:#0f1923;
+}
+.writable {
+    font-size: 0;
+
+}
+.writable-area {
+    resize: none;
+    border:1px solid #4b87ac;
+    width:773px;
+    height:60px;
+    font-size: 14px;
+}
+#post-btn {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    height:30px;
+    width:50px;
+    font-size: 14px;
+    color:#fff;
+    border:1px solid #4b87ac;
+    text-align: center;
+    line-height: 30px;
+    margin-left: 37px;
+    margin-top: 4px;
+    border-left: none;
+    background: #1f87bd;
+}
+.login-tip {
+    height:28px;
+    margin-top:13px;
+    background: #fb6346;
+    text-align: center;
+    color: #fff;
+    line-height: 28px;
+    font-size:14px;
+}
+.comments-list-wrap {
+    padding:26px 10px 0;
+}
+.no-comment {
+    padding: 0 0 26px;
+}
+.comments-item-hd {
+    height:22px;
+    color: #333;
+    margin-bottom: 4px;
+    font-size: 14px;
+
+}
+.comments-item-content {
+    line-height: 22px;
+    color: #333;
+    background-color: #dbdbdb;
+}
+.comments-item {
+    margin-bottom: 24px;
+}
+.article-intro {
+
+    font:400 18px "Open Sans","Hiragino Sans GB",sans-serif;
+}
+.article-intro p {
+    margin-bottom:30px;
+}
+.article-intro code {
+    font-family: "Droid Sans Mono",monospace;
+}
+h1 {
+    margin: 22px 0;
+    font-size:1.8em;
+}
+h2 {
+    margin: 21px 0;
+    font-size:1.5em;
+}
+h3 {
+    margin: 18px 0;
+    font-size:1.18em;
+}
+h4 {
+    margin: 16px 0;
+}
+h5 {
+    margin: 12px 0;
+}
+h6 {
+    margin: 8px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+}
+@font-face {
+    font-family: 'Droid Sans Mono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Droid Sans Mono'), local('DroidSansMono'), url('/public/fonts/DroidSansMono.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v13/K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+}
+.comments-user  {
+    margin:0;
+}
+

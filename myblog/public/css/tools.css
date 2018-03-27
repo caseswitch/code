@@ -1,0 +1,27 @@
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.fl {
+    float: left;
+
+}
+.fr {
+    float: right;
+}
+.pa {
+    position: absolute;
+}
+.pr {
+    position: relative;
+}
+.none {
+    display: none;
+}
+.show {
+    display: block;
+}
+.ib {
+    display: inline-block;
+}

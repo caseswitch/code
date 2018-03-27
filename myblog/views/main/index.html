@@ -1,0 +1,64 @@
+{% extends  'parent.html' %}
+{% block content %}
+{% for content in contents %}
+    <div class="article-part">
+        <h3 class="article-hd">
+            {{content.title}}
+        </h3>
+        <div class="article-info">
+            <div class="article-info-wrap">
+                                <span class="article-info-author article-info-item">
+                                    作者
+                                    <strong class="article-h">
+                                        {{content.user.username}}
+                                    </strong>
+                                </span>
+                <span class="article-info-time article-info-item">
+                                    时间
+                                    <strong class="article-h">
+                                        {{content.addTime | date('Y年m月d日 H:m:s', -8*60)}}
+                                    </strong>
+                                </span>
+                <span class="article-info-read article-info-item">
+                                    阅读
+                                    <strong class="article-h">
+                                        {{content.views}}
+                                    </strong>
+                                </span>
+                <span class="article-info-review article-info-item">
+                                    评论
+                                    <strong class="article-h">
+                                        {{content.comments.length}}
+                                    </strong>
+                                </span>
+            </div>
+        </div>
+        <div class="article-intro">
+            {{content.intro}}
+        </div>
+        <div class="article-btn">
+            <a href="/views?contentId={{content.id}}">阅读全文</a>
+        </div>
+    </div>
+{% endfor %}
+
+<div class="page clearfix">
+    {% if data.page<=1 %}
+    <span class="page-prev fl">没有上一页了</span>
+    {% else %}
+    <a class="page-prev fl" href="/?page={{data.page-1}}&category={{data.whichCategory}}">上一页</a>
+    {% endif %}
+    <div class="page-num pa">{{data.page}}/{{data.pages}}</div>
+    {% if data.page>=data.pages %}
+    <span class="page-next fr">没有下一页了</span>
+    {% else %}
+    <a class="page-next fr" href="/?page={{data.page+1}}&category={{data.whichCategory}}">下一页</a>
+    {% endif %}
+</div>
+{% endblock %}
+{% block attach %}
+
+<script>
+
+</script>
+{% endblock %}

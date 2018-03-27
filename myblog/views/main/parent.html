@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人博客</title>
+    <link rel="stylesheet" href="public/css/reset.css">
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/tools.css">
+    {%block attachCss%}{%endblock%}
+    <script src="public/js/jquery-3.1.1.js"></script>
+    <script src="public/js/index.js"></script>
+</head>
+<body>
+    <header class="hd">
+        <div class="hd-bcg">
+            <div class="main-title">
+                <p>个人博客</p>
+            </div>
+        </div>
+    </header>
+    <div class="top-nav">
+        <div class="top-nav-wrap">
+            <div class="top-nav-inner">
+                {% if !data.whichCategory %}
+                <div class="top-nav-item top-nav-active">
+                    <a href="/" class="top-nav-link">
+                        首页
+                    </a>
+                </div>
+                {% else %}
+                <div class="top-nav-item">
+                    <a href="/" class="top-nav-link">
+                        首页
+                    </a>
+                </div>
+                {% endif %}
+                {% for category in categories %}
+                {% if category.id == data.whichCategory %}
+                <div class="top-nav-item top-nav-active">
+                    <a href="/?category={{category.id}}" class="top-nav-link">
+                        {{category.name}}
+                    </a>
+                </div>
+                {% else %}
+                <div class="top-nav-item">
+                    <a href="/?category={{category.id}}" class="top-nav-link">
+                        {{category.name}}
+                    </a>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <section class="bd">
+        <div class="banner">
+            <ul class="ad">
+                <li class="select"><img src="../../public/images/ban4.jpg" alt=""></li>
+                <li><img src="../../public/images/ban1.jpg" alt=""></li>
+                <li><img src="../../public/images/ban2.jpg" alt=""></li>
+                <li><img src="../../public/images/ban3.jpg" alt=""></li>
+            </ul>
+        </div>
+        <section class="main clearfix">
+            <section class="content">
+                {% block content %}{% endblock %}
+            </section>
+            {% if !offside %}
+            <section class="side">
+                {% if userInfo._id %}
+                <div class="user-box side-box">
+                    <div class="side-item-wrap">
+                        <div class="side-hd">
+                            <h3>用户信息</h3>
+                        </div>
+                        <div class="side-content">
+                            <div class="user-name">
+                                {{ username }}
+                            </div>
+                        </div>
+                        <div class="side-foot user-ft">
+                            {% if userInfo.isAdmin %}
+                            <span class="welcome">
+
+                                        你好，管理员
+                                        <a href="/admin">管理页面</a>
+                                    </span>
+
+                            {% else %}
+                            <span class="welcome">你好，欢迎{{userInfo.username}}光临我的博客</span>
+                            {% endif %}
+
+                        </div>
+                        <div>
+                            <button class="login-leave"><a id="login-out">退出</a></button>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="login-box side-box ">
+                    <div class="side-item-wrap">
+                        <div class="side-hd">
+                            <h3>登录</h3>
+                        </div>
+                        <div class="side-content ">
+                            <dl class="side-content-inp clearfix">
+                                <dt class="side-inp-tip fl">
+                                    用户名:
+                                </dt>
+                                <dd class="side-inp-wrap fl">
+                                    <input type="text" class="user side-inp" name="username">
+                                </dd>
+                            </dl>
+                            <dl class="side-content-inp clearfix">
+                                <dt class="side-inp-tip fl">
+                                    密码:
+                                </dt>
+                                <dd class="side-inp-wrap fl">
+                                    <input type="password" class="user side-inp" name="password">
+                                </dd>
+                            </dl>
+                            <dl class="side-content-inp clearfix ">
+                                <dt class="side-inp-tip fl">
+
+                                </dt>
+                                <dd class="side-submit fl">
+                                    登录
+                                </dd>
+                            </dl>
+
+                        </div>
+                        <div class="side-foot login-ft">
+                            <span>还没注册？</span>
+                            <a href="javascript:;" class="register-btn">马上注册</a>
+                        </div>
+                        <div class="user-waring"></div>
+                    </div>
+                </div>
+                <div class="register-box side-box none">
+                    <div class="side-item-wrap">
+                        <div class="side-hd">
+                            <h3>注册</h3>
+                        </div>
+                        <div class="side-content ">
+                            <dl class="side-content-inp clearfix">
+                                <dt class="side-inp-tip fl">
+                                    用户名:
+                                </dt>
+                                <dd class="side-inp-wrap fl">
+                                    <input type="text" class="user side-inp" name="username">
+                                </dd>
+                            </dl>
+                            <dl class="side-content-inp clearfix">
+                                <dt class="side-inp-tip fl">
+                                    密码:
+                                </dt>
+                                <dd class="side-inp-wrap fl">
+                                    <input type="password" class="user side-inp" name="password">
+                                </dd>
+                            </dl>
+                            <dl class="side-content-inp clearfix">
+                                <dt class="side-inp-tip fl">
+                                    确认:
+                                </dt>
+                                <dd class="side-inp-wrap fl">
+                                    <input type="password" class="user side-inp" name="repassword">
+                                </dd>
+                            </dl>
+                            <dl class="side-content-inp clearfix ">
+                                <dt class="side-inp-tip fl">
+
+                                </dt>
+                                <dd class="side-submit fl">
+                                    注册
+                                </dd>
+                            </dl>
+
+                        </div>
+                        <div class="side-foot login-ft">
+                            <span>已有帐号？</span>
+                            <a href="javascript:;" class="login-btn">马上登录</a>
+                        </div>
+                        <div class="user-waring"></div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="list-box side-box">
+                    <div class="side-item-wrap">
+                        <div class="side-hd">
+                            <h3>列表</h3>
+                        </div>
+                        <ul class="side-list">
+                            <li class="side-list-item">
+                                <a href="">列表1</a>
+                            </li>
+                            <li class="side-list-item">
+                                <a href="">列表2</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+            {% endif %}
+        </section>
+</section>
+    <div class="foot">
+        <div class="footContent clearfix">
+            <div class="left">
+                <div class="friendLink">
+                    <ul class="clearfix">
+                        <li><a href="#">关于网站</a><span>|</span></li>
+                        <li><a href="#">客户服务</a><span>|</span></li>
+                        <li><a href="#">服务条款</a><span>|</span></li>
+                        <li><a href="#">网站导航</a><span>|</span></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <p class="copy">版权所有&copy;1997-2018&nbsp;&nbsp;[2015]C415-135号</p>
+            </div>
+            <div class="right f-r">
+                <ul>
+                    <li class="i-bok"><a href="#" class="single i-bok"></a></li>
+                    <li class="i-bok"><a href="#" class="msc-col i-bok"></a></li>
+                    <li class="i-bok"><a href="#" class="media i-bok"></a></li>
+                    <li class="i-bok"><a href="#" class="acn i-bok"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
